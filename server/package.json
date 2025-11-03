@@ -1,0 +1,17 @@
+{
+  "name": "server",
+  "type": "module",
+  "devDependencies": {
+    "@types/express": "^5",
+    "@types/node": "^24.9.2",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "scripts": {
+    "build": "npx tsc",
+    "test": "node ./dist/test.js"
+  }
+}
