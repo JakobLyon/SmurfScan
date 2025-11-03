@@ -14,5 +14,10 @@
     "chalk": "^5.6.2",
     "dotenv": "^17.2.3",
     "node-fetch": "^3.3.2"
-  }
+  },
+  "packageManager": "yarn@4.10.3",
+  "private": true,
+  "workspaces": [
+    "server"
+  ]
 }
