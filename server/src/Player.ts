@@ -25,7 +25,7 @@ export class Player {
     if (this.tagLine === "") {
       throw new Error("tagLine missing");
     }
-    const account = await PlayerService.getAccountByRiotId(this.gameName, this.tagLine, "NA1");
+    const account = await PlayerService.getAccountByRiotId(this.gameName, this.tagLine, "americas");
     this.id = account.puuid;
   }
 }
