@@ -13,7 +13,7 @@
     "rootDir": ".",
     "outDir": "dist",
     "esModuleInterop": true,
-    "types": ["node", "jest"],
+    "types": ["node"],
 
     // Other Outputs
     "sourceMap": true,

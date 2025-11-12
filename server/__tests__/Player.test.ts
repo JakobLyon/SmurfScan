@@ -1,7 +1,7 @@
 /**
  * @file Player tests
  */
-import { describe, beforeEach, it, expect, jest } from "@jest/globals";
+import { describe, beforeEach, it, expect, vi } from "vitest";
 import { Player } from "../src/Player.js";
 import { PlayerService } from "../src/PlayerService.js";
 
@@ -24,7 +24,7 @@ describe("Player", () => {
 
   it("calls PlayerService.getAccountByRiotId and sets id", async () => {
     // Mock the service method
-    jest
+    vi
       .spyOn(PlayerService, "getAccountByRiotId")
       .mockResolvedValue({ puuid: "fake-uuid" });
 
