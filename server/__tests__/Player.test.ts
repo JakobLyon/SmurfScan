@@ -51,11 +51,11 @@ describe("Player", () => {
       .mockResolvedValue({matches: ["a", "b", "c"]});
 
     await player.populateMatchData();
-     expect(PlayerService.getAccountByRiotId).toHaveBeenCalledWith(
+     expect(PlayerService.getRankedData).toHaveBeenCalledWith(
       "na1",
       "fake-uuid",
     );
-    expect(player.matches).toBe(["a", "b", "c"]);
+    expect(player.matches).toStrictEqual(["a", "b", "c"]);
   });
 
 });
