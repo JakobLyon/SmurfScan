@@ -9,6 +9,10 @@ interface AccountResponse {
   puuid: string;
 }
 
+interface RankedDataResponse {
+  matches: any[]
+}
+
 export class PlayerService {
   /**
    * Helper function to make network request
@@ -60,5 +64,18 @@ export class PlayerService {
     const res = await this.apiFetch(url);
     if (!res.ok) throw new Error(`Failed to fetch account: ${res.status}`);
     return (await res.json()) as AccountResponse;
+  }
+
+  /**
+   * 
+   * @param platform 
+   * @param puuid 
+   * @returns         a set of recent matches
+   */
+  static async getRankedData(platform: string, puuid: string): Promise<{matches: any[]}> {
+    const url = `https://${platform}.api.riotgames.com/lol/league/v4/entries/by-puuid/${puuid}`;
+    const res = await this.apiFetch(url);
+    if (!res.ok) throw new Error(`Failed to fetch ranked data: ${res.status}`);
+    return (await res.json()) as RankedDataResponse;
   }
 }

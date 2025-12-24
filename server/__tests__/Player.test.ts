@@ -37,4 +37,25 @@ describe("Player", () => {
     );
     expect(player.id).toBe("fake-uuid");
   });
+
+  it("calls PlayerService.getRankedMatches and sets matches", async () => {
+    // Mock the service method
+    vi
+      .spyOn(PlayerService, "getAccountByRiotId")
+      .mockResolvedValue({ puuid: "fake-uuid" });
+
+    // Setup player with id
+    await player.populateId();
+    vi 
+      .spyOn(PlayerService, "getRankedData")
+      .mockResolvedValue({matches: ["a", "b", "c"]});
+
+    await player.populateMatchData();
+     expect(PlayerService.getAccountByRiotId).toHaveBeenCalledWith(
+      "na1",
+      "fake-uuid",
+    );
+    expect(player.matches).toBe(["a", "b", "c"]);
+  });
+
 });

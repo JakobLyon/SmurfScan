@@ -8,7 +8,7 @@ export class Player {
   gameName = "";
   tagLine = "";
   id = "";
-  matches = [];
+  matches = [] as any[];
 
   constructor(gameName: string, tagLine: string) {
     this.gameName = gameName;
@@ -31,5 +31,16 @@ export class Player {
       "americas"
     );
     this.id = account.puuid;
+  }
+
+  /**
+   * Hydrate recent ranked matches
+   */
+  async populateMatchData() {
+    if (this.id === "") {
+      throw new Error("id missing");
+    }
+    const res = await PlayerService.getRankedData("na1", this.id);
+    this.matches = res.matches;
   }
 }
